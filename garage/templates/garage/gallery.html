@@ -1,0 +1,381 @@
+<!-- garage/templates/garage/gallery.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<!-- Gallery Hero -->
+<section class="hero-section" style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('{% static "images/Garage.png" %}') center/cover;">
+    <div class="hero-content">
+        <h1 class="display-2">OUR WORK</h1>
+        <p class="lead">Every build tells a story of transformation</p>
+    </div>
+</section>
+
+<!-- Filter Section -->
+<section class="section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="section-title">LEGENDS WE'VE BUILT</h2>
+                <p class="lead text-light-gray mb-4">From street machines to show stoppers, see what's possible</p>
+                
+                <!-- Filter Buttons -->
+                <div class="filter-buttons mb-5">
+                    <button class="btn btn-outline-primary active me-2 mb-2" data-filter="all">ALL BUILDS</button>
+                    <button class="btn btn-outline-primary me-2 mb-2" data-filter="engine">ENGINE SWAPS</button>
+                    <button class="btn btn-outline-primary me-2 mb-2" data-filter="paint">CUSTOM PAINT</button>
+                    <button class="btn btn-outline-primary me-2 mb-2" data-filter="show">SHOW CARS</button>
+                    <button class="btn btn-outline-primary me-2 mb-2" data-filter="track">TRACK BUILDS</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Skyline R34 -->
+            <div class="gallery-item" data-category="engine track">
+                <img src="{% static 'images/GTR.png' %}" alt="Nissan Skyline R34" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/00d4ff?text=Skyline+R34+Build'">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h5>Nissan Skyline R34 GT-R</h5>
+                        <p>RB26 twin-turbo, custom widebody, full roll cage. 650HP street weapon.</p>
+                        <div class="gallery-stats">
+                            <span class="stat-badge bg-primary">650 HP</span>
+                            <span class="stat-badge bg-success">2.9s 0-60</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mustang GT -->
+            <div class="gallery-item" data-category="engine paint">
+                <img src="{% static 'images/Mustang 5.0.png' %}" alt="Ford Mustang GT" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/cc0000?text=Mustang+GT+Build'">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h5>Ford Mustang GT 5.0</h5>
+                        <p>Supercharged Coyote V8, custom exhaust, racing suspension. American muscle redefined.</p>
+                        <div class="gallery-stats">
+                            <span class="stat-badge bg-primary">580 HP</span>
+                            <span class="stat-badge bg-danger">Custom Paint</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Honda S2000 -->
+            <div class="gallery-item" data-category="show paint">
+                <img src="{% static 'images/Honda S2000.png' %}" alt="Honda S2000" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/39ff14?text=S2000+Show+Build'">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h5>Honda S2000 - Show Stopper</h5>
+                        <p>VeilSide body kit, turbo F22C, custom red pearl paint. Pure artwork on wheels.</p>
+                        <div class="gallery-stats">
+                            <span class="stat-badge bg-warning">Show Quality</span>
+                            <span class="stat-badge bg-primary">420 HP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Civic Type R -->
+            <div class="gallery-item" data-category="track engine">
+                <img src="{% static 'images/Civic.png' %}" alt="Honda Civic Type R" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/00d4ff?text=Civic+Type+R+Track'">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h5>Honda Civic Type R - Track Weapon</h5>
+                        <p>K20C1 turbo upgrade, aero package, race suspension. Built for the circuit.</p>
+                        <div class="gallery-stats">
+                            <span class="stat-badge bg-primary">380 HP</span>
+                            <span class="stat-badge bg-success">Track Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supra MK4 -->
+            <div class="gallery-item" data-category="engine show">
+                <img src="{% static 'images/Supra.png' %}" alt="Toyota Supra MK4" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/cc0000?text=Supra+MK4+Legend'">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h5>Toyota Supra MK4 - The Legend</h5>
+                        <p>2JZ-GTE twin-turbo, single turbo conversion, 4-digit horsepower. The ultimate.</p>
+                        <div class="gallery-stats">
+                            <span class="stat-badge bg-danger">1000+ HP</span>
+                            <span class="stat-badge bg-warning">Street Legal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BMW M3 E46 -->
+            <div class="gallery-item" data-category="track paint">
+                <img src="{% static 'images/bmw.png' %}" alt="BMW M3 E46" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/39ff14?text=BMW+M3+E46+Track'">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h5>BMW M3 E46 - Track Day Beast</h5>
+                        <p>S54 engine build, custom cage, race livery. German precision meets track fury.</p>
+                        <div class="gallery-stats">
+                            <span class="stat-badge bg-primary">450 HP</span>
+                            <span class="stat-badge bg-success">Caged</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nissan Z -->
+            <div class="gallery-item" data-category="paint show">
+                <img src="{% static 'images/featured-z.png' %}" alt="Nissan Z 2023" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/00d4ff?text=Nissan+Z+2023+Build'">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h5>2023 Nissan Z - Modern Classic</h5>
+                        <p>VR30 twin-turbo tune, widebody kit, midnight blue pearl paint. New school legend.</p>
+                        <div class="gallery-stats">
+                            <span class="stat-badge bg-primary">520 HP</span>
+                            <span class="stat-badge bg-danger">Fresh Build</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WRX STI -->
+            <div class="gallery-item" data-category="engine track">
+                <img src="{% static 'images/subaru.png' %}" alt="Subaru WRX STI" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/cc0000?text=WRX+STI+Rally+Beast'">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h5>Subaru WRX STI - Rally Beast</h5>
+                        <p>EJ257 forged internals, upgraded turbo, rally suspension. All-wheel dominance.</p>
+                        <div class="gallery-stats">
+                            <span class="stat-badge bg-primary">480 HP</span>
+                            <span class="stat-badge bg-success">AWD Power</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-5">
+            <button class="btn btn-outline-primary btn-lg" id="loadMoreBtn">LOAD MORE BUILDS</button>
+        </div>
+    </div>
+</section>
+
+<!-- Process Preview -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="section-title text-start">WANT YOUR CAR HERE?</h2>
+                <p class="lead text-light-gray mb-4">Every build starts with a vision. Let's make yours reality.</p>
+                <ul class="list-unstyled mb-4">
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-phone text-primary me-3 fa-lg"></i>
+                        <span>Call us at <strong class="text-primary">(555) TUNE-NOW</strong></span>
+                    </li>
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-envelope text-primary me-3 fa-lg"></i>
+                        <span>Email <strong class="text-primary">legends@timmysgarage.com</strong></span>
+                    </li>
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-map-marker-alt text-primary me-3 fa-lg"></i>
+                        <span>Visit us at <strong class="text-primary">2847 Underground Blvd</strong></span>
+                    </li>
+                </ul>
+                <a href="{% url 'garage:contact' %}" class="btn btn-primary btn-lg">START YOUR BUILD</a>
+            </div>
+            <div class="col-lg-6">
+                <div class="build-stats p-4">
+                    <h3 class="text-center mb-4 text-primary">BY THE NUMBERS</h3>
+                    <div class="row text-center">
+                        <div class="col-6 mb-3">
+                            <div class="performance-number">200+</div>
+                            <small class="text-white">BUILDS COMPLETED</small>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="performance-number">15</div>
+                            <small class="text-white">YEARS EXPERIENCE</small>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="performance-number">98%</div>
+                            <small class="text-white">CLIENT SATISFACTION</small>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="performance-number">24/7</div>
+                            <small class="text-white">PASSION FOR SPEED</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Custom CSS and JavaScript for gallery page -->
+<style>
+.filter-buttons .btn {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.filter-buttons .btn.active {
+    background: var(--electric-blue);
+    color: white;
+    border-color: var(--electric-blue);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--dark-gray);
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.95));
+    padding: 2rem 1.5rem 1.5rem;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-info h5 {
+    color: var(--electric-blue);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-info p {
+    color: var(--light-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.gallery-stats {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.stat-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.build-stats {
+    background: var(--dark-gray);
+    border-radius: 15px;
+    border: 2px solid var(--electric-blue);
+}
+
+.text-light-gray {
+    color: var(--light-gray);
+}
+
+/* Gallery item hidden state for filtering */
+.gallery-item.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .filter-buttons {
+        text-align: center;
+    }
+    
+    .filter-buttons .btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+}
+</style>
+
+<script>
+// Gallery filtering functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter gallery items
+            galleryItems.forEach(item => {
+                if (filter === 'all') {
+                    item.classList.remove('hidden');
+                } else {
+                    const categories = item.getAttribute('data-category');
+                    if (categories && categories.includes(filter)) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    });
+    
+    // Load more functionality (placeholder)
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            this.innerHTML = '<span class="spinner"></span> Loading...';
+            
+            // Simulate loading delay
+            setTimeout(() => {
+                this.innerHTML = 'NO MORE BUILDS TO SHOW';
+                this.disabled = true;
+                this.classList.add('btn-outline-secondary');
+                this.classList.remove('btn-outline-primary');
+            }, 2000);
+        });
+    }
+});
+</script>
+{% endblock %}

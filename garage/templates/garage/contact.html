@@ -1,0 +1,372 @@
+<!-- garage/templates/garage/contact.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<!-- Contact Hero -->
+<section class="hero-section" style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('{% static "images/Garage.png" %}') center/cover;">
+    <div class="hero-content">
+        <h1 class="display-2">GET YOUR BUILD STARTED</h1>
+        <p class="lead">Every legend starts with a conversation</p>
+    </div>
+</section>
+
+<!-- Contact Content -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-8">
+                <div class="contact-form">
+                    <h2 class="text-primary mb-4">TELL US ABOUT YOUR BUILD</h2>
+                    <p class="text-light-gray mb-4">Ready to transform your ride? Fill out this form and we'll get back to you with a custom quote. Be specific about what you want - the more details, the better we can help.</p>
+                    
+                    <form id="contactForm" method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">FULL NAME *</label>
+                                <input type="text" class="form-control" id="name" name="name" required placeholder="Your name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">EMAIL ADDRESS *</label>
+                                <input type="email" class="form-control" id="email" name="email" required placeholder="your.email@example.com">
+                            </div>
+                            <div class="col-12">
+                                <label for="carInfo" class="form-label">YOUR CAR *</label>
+                                <input type="text" class="form-control" id="carInfo" name="car_info" required placeholder="e.g., 2015 Nissan 370Z, 2020 Honda Civic Type R, 1998 Toyota Supra">
+                            </div>
+                            <div class="col-12">
+                                <label for="buildType" class="form-label">BUILD TYPE</label>
+                                <select class="street-select" id="buildType" name="build_type">
+                                    <option value="">Select your build type...</option>
+                                    <option value="street">Street Build ($5K - $15K)</option>
+                                    <option value="track">Track Beast ($15K - $40K)</option>
+                                    <option value="show">Show Stopper ($40K+)</option>
+                                    <option value="consultation">Just need consultation</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label">WHAT DO YOU WANT DONE? *</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Be specific: Engine swap? Custom paint? Turbo kit? Full build? Tell us your vision and budget range."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="noBasicMaintenance" required>
+                                    <label class="form-check-label text-light-gray" for="noBasicMaintenance">
+                                        I understand this is a PERFORMANCE SHOP ONLY. You don't do oil changes, tire rotations, or basic maintenance.
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>GET MY CUSTOM QUOTE
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="col-lg-4">
+                <div class="contact-info">
+                    <h3 class="text-primary mb-4">GET IN TOUCH</h3>
+                    
+                    <div class="contact-method mb-4">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone fa-2x text-primary"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h5 class="text-primary">CALL US</h5>
+                            <p class="text-light-gray mb-1">{{ garage_info.phone }}</p>
+                            <small class="text-white">Best way to reach us</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method mb-4">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope fa-2x text-primary"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h5 class="text-primary">EMAIL US</h5>
+                            <p class="text-light-gray mb-1">{{ garage_info.email }}</p>
+                            <small class="text-white">24/7 inbox monitoring</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method mb-4">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h5 class="text-primary">VISIT US</h5>
+                            <p class="text-light-gray mb-1">{{ garage_info.address }}</p>
+                            <small class="text-white">By appointment only</small>
+                        </div>
+                    </div>
+                    
+                    <div class="hours-box p-4 mb-4">
+                        <h5 class="text-primary mb-3">SHOP HOURS</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2 d-flex justify-content-between">
+                                <span class="text-light-gray">Mon - Fri:</span>
+                                <span class="text-success fw-bold">9AM - 9PM</span>
+                            </li>
+                            <li class="mb-2 d-flex justify-content-between">
+                                <span class="text-light-gray">Saturday:</span>
+                                <span class="text-success fw-bold">10AM - 6PM</span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <span class="text-light-gray">Sunday:</span>
+                                <span class="text-danger">CLOSED</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="emergency-contact p-4">
+                        <h6 class="text-danger mb-3">URGENT BUILDS?</h6>
+                        <p class="text-light-gray small mb-2">Got a race this weekend? Event coming up?</p>
+                        <p class="text-light-gray small">Call us directly - we sometimes work nights for rush jobs.</p>
+                        <a href="tel:555-TUNE-NOW" class="btn btn-danger btn-sm mt-2">CALL FOR RUSH SERVICE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item bg-dark border-primary mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                How much will my build cost?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-dark text-light-gray">
+                                Every build is custom, so pricing varies wildly. Street builds start around $5K, track builds $15K+, show cars $40K+. The more specific you are about what you want, the more accurate our quote will be.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item bg-dark border-primary mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                How long does a build take?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-dark text-light-gray">
+                                Depends on the complexity. Simple bolt-ons: 1-2 weeks. Engine swaps: 4-8 weeks. Full custom builds: 3-6 months. We'll give you a timeline with your quote.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item bg-dark border-primary mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Do you work on all car brands?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-dark text-light-gray">
+                                We specialize in performance cars: Japanese imports, American muscle, European sports cars. If it's got potential to be fast, we'll work on it. No minivans, no economy cars, no grocery getters.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item bg-dark border-primary mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                Can you fix my check engine light?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-dark text-danger">
+                                <strong>NO.</strong> We're a performance shop, not a repair shop. Take basic maintenance and repairs to a regular mechanic. We build race cars, not fix broken grocery getters.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item bg-dark border-primary mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                Do you offer payment plans?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-dark text-light-gray">
+                                For builds over $10K, we can work out payment schedules. Usually 50% down to start, remainder on completion. We're reasonable people building reasonable cars for reasonable clients.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Location Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title">FIND US</h2>
+                <div class="location-info p-5 rounded neon-border mx-auto" style="max-width: 600px; background: var(--dark-gray);">
+                    <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
+                    <h4 class="text-primary mb-3">{{ garage_info.address }}</h4>
+                    <p class="text-light-gray mb-4">Located in the heart of Motor City's underground racing scene. Look for the shop with the loudest exhausts and the brightest underglow.</p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="https://maps.google.com/?q=2847+Underground+Blvd+Motor+City" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-directions me-2"></i>GET DIRECTIONS
+                        </a>
+                        <a href="tel:555-TUNE-NOW" class="btn btn-danger">
+                            <i class="fas fa-phone me-2"></i>CALL BEFORE VISITING
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Custom CSS for contact page -->
+<style>
+.contact-form {
+    background: var(--dark-gray);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 2px solid var(--electric-blue);
+    margin-bottom: 2rem;
+}
+
+.contact-info {
+    background: var(--charcoal);
+    padding: 2rem;
+    border-radius: 15px;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.contact-method {
+    display: flex;
+    align-items-flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--dark-gray);
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.contact-method:hover {
+    border-color: var(--electric-blue);
+    transform: translateX(10px);
+}
+
+.contact-icon {
+    min-width: 60px;
+}
+
+.contact-details h5 {
+    margin-bottom: 0.5rem;
+}
+
+.hours-box {
+    background: var(--dark-gray);
+    border: 1px solid var(--electric-blue);
+    border-radius: 10px;
+}
+
+.emergency-contact {
+    background: linear-gradient(135deg, var(--deep-red), #aa0000);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.form-control {
+    background: var(--charcoal);
+    border: 2px solid var(--dark-gray);
+    color: var(--white);
+    padding: 12px 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background: var(--charcoal);
+    border-color: var(--electric-blue);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    color: var(--white);
+}
+
+.form-control::placeholder {
+    color: var(--light-gray);
+}
+
+.form-label {
+    color: var(--electric-blue);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.form-check-input:checked {
+    background-color: var(--electric-blue);
+    border-color: var(--electric-blue);
+}
+
+.accordion-button {
+    font-weight: 600;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--electric-blue) !important;
+    color: white !important;
+}
+
+.accordion-item {
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+
+.location-info {
+    background: var(--dark-gray);
+}
+
+.text-light-gray {
+    color: var(--light-gray);
+}
+
+@media (max-width: 768px) {
+    .contact-form,
+    .contact-info {
+        padding: 1.5rem;
+    }
+    
+    .contact-info {
+        position: relative;
+        top: auto;
+        margin-top: 2rem;
+    }
+    
+    .contact-method {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
+{% endblock %}

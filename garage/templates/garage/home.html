@@ -1,0 +1,201 @@
+<!-- garage/templates/garage/home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="display-1">{{ hero_title }}</h1>
+        <p class="lead">{{ mission_statement }}</p>
+        <div class="mt-4">
+            <a href="{% url 'garage:services' %}" class="btn btn-primary btn-lg me-3">VIEW SERVICES</a>
+            <a href="{% url 'garage:contact' %}" class="btn btn-danger btn-lg">GET QUOTE</a>
+        </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4">
+        <i class="fas fa-chevron-down fa-2x text-primary animate-bounce"></i>
+    </div>
+</section>
+
+<!-- Quick Services Preview -->
+<section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">WHAT WE BUILD</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="service-preview text-center h-100">
+                    <div class="service-icon mb-3">
+                        <i class="fas fa-cog fa-4x text-primary"></i>
+                    </div>
+                    <h3 class="h4 mb-3 text-primary">ENGINE & PERFORMANCE</h3>
+                    <p class="text-light-gray">2JZ swaps, turbo installs, custom ECU tuning. We build the heart of your machine.</p>
+                    <div class="performance-stats mt-3">
+                        <span class="performance-number">500+</span>
+                        <small class="d-block text-white">HP BUILDS COMPLETED</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="service-preview text-center h-100">
+                    <div class="service-icon mb-3">
+                        <i class="fas fa-palette fa-4x text-danger"></i>
+                    </div>
+                    <h3 class="h4 mb-3 text-danger">AESTHETICS & BODY</h3>
+                    <p class="text-light-gray">Custom paint, body kits, carbon fiber. Make your ride impossible to ignore.</p>
+                    <div class="performance-stats mt-3">
+                        <span class="performance-number">200+</span>
+                        <small class="d-block text-white">SHOW CARS BUILT</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="service-preview text-center h-100">
+                    <div class="service-icon mb-3">
+                        <i class="fas fa-road fa-4x" style="color: var(--neon-green);"></i>
+                    </div>
+                    <h3 class="h4 mb-3" style="color: var(--neon-green);">HANDLING & SUSPENSION</h3>
+                    <p class="text-light-gray">Coilovers, big brakes, custom wheels. Corner like you're on rails.</p>
+                    <div class="performance-stats mt-3">
+                        <span class="performance-number">15</span>
+                        <small class="d-block text-white">YEARS EXPERIENCE</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Work Section -->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title text-start">LATEST BUILD</h2>
+                <h3 class="text-primary mb-3">2023 Nissan Z - The Beast</h3>
+                <ul class="list-unstyled mb-4">
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Twin-Turbo VR30 Engine Tune</li>
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Custom Widebody Kit</li>
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Coilover Suspension System</li>
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Full Custom Paint - Midnight Blue Pearl</li>
+                </ul>
+                <div class="row g-3 mb-4">
+                    <div class="col-4 text-center">
+                        <span class="performance-number">650</span>
+                        <small class="d-block text-white">HORSEPOWER</small>
+                    </div>
+                    <div class="col-4 text-center">
+                        <span class="performance-number">3.2</span>
+                        <small class="d-block text-white">0-60 MPH</small>
+                    </div>
+                    <div class="col-4 text-center">
+                        <span class="performance-number">10.8</span>
+                        <small class="d-block text-white">1/4 MILE</small>
+                    </div>
+                </div>
+                <a href="{% url 'garage:gallery' %}" class="btn btn-primary">VIEW FULL GALLERY</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="featured-image-container">
+                    <img src="{% static 'images/featured-z.png' %}" alt="Featured Nissan Z Build" class="img-fluid rounded neon-border">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section section-dark">
+    <div class="container text-center">
+        <h2 class="section-title">READY TO BUILD YOUR LEGEND?</h2>
+        <p class="lead mb-5 text-light-gray">Don't settle for stock. Let's build something that commands respect on the streets.</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="cta-box p-5 rounded neon-border">
+                    <h3 class="text-primary mb-3">PERFORMANCE SHOP ONLY</h3>
+                    <p class="mb-4">We don't do oil changes. We don't rotate tires. We don't work on minivans.</p>
+                    <p class="text-danger fw-bold mb-4">WE BUILD RACE CARS.</p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="{% url 'garage:contact' %}" class="btn btn-primary btn-lg">START YOUR BUILD</a>
+                        <a href="tel:555-TUNE-NOW" class="btn btn-danger btn-lg">CALL NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Custom CSS for home page specific styles -->
+<style>
+.service-preview {
+    background: var(--dark-gray);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.service-preview:hover {
+    border-color: var(--electric-blue);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+}
+
+.service-icon {
+    transition: all 0.3s ease;
+}
+
+.service-preview:hover .service-icon {
+    transform: scale(1.1);
+}
+
+.featured-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.featured-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(57, 255, 20, 0.1));
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.cta-box {
+    background: linear-gradient(135deg, var(--charcoal), var(--dark-gray));
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+
+.text-light-gray {
+    color: var(--light-gray);
+}
+</style>
+{% endblock %}

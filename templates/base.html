@@ -1,0 +1,537 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Timmy's Underground Garage{% endblock %}</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Underground Racing Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Electrolize:wght@400&family=Audiowide:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CORE UNDERGROUND AESTHETIC */
+        :root {
+            --underground-black: #0a0a0a;
+            --street-dark: #121212;
+            --asphalt-gray: #1a1a1a;
+            --concrete-gray: #242424;
+            --neon-blue: #00ccff;
+            --neon-green: #39ff14;
+            --danger-red: #ff0040;
+            --warning-orange: #ff6600;
+            --pure-white: #ffffff;
+            --dim-white: #e0e0e0;
+            --shadow-alpha: rgba(0, 0, 0, 0.9);
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--underground-black);
+            color: var(--pure-white);
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* DARK STREET BACKGROUND TEXTURE */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(0deg, var(--underground-black) 0%, var(--street-dark) 100%),
+                url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiIC8+PC9zdmc+');
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* STREET NEON GLOW EFFECTS */
+        .neon-glow {
+            text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor;
+        }
+        
+        .neon-blue-glow {
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+        }
+        
+        .neon-green-glow {
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+        }
+        
+        .neon-red-glow {
+            color: var(--danger-red);
+            text-shadow: 0 0 5px var(--danger-red), 0 0 10px var(--danger-red), 0 0 20px var(--danger-red);
+        }
+        
+        /* UNDERGROUND NAVIGATION */
+        .underground-nav {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(24, 24, 24, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--neon-blue);
+            box-shadow: 
+                0 0 20px rgba(0, 204, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .underground-nav.scrolled {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(18, 18, 18, 0.98) 100%);
+            box-shadow: 
+                0 0 30px rgba(0, 204, 255, 0.5),
+                0 5px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .garage-logo {
+            font-family: 'Audiowide', cursive;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--pure-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .garage-logo:hover {
+            color: var(--neon-blue);
+        }
+        
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .logo-wrench {
+            color: var(--neon-blue);
+            animation: wrench-rotate 8s linear infinite;
+            filter: drop-shadow(0 0 5px var(--neon-blue));
+        }
+        
+        .logo-gear {
+            color: var(--danger-red);
+            animation: gear-rotate 6s linear infinite reverse;
+            filter: drop-shadow(0 0 5px var(--danger-red));
+        }
+        
+        @keyframes wrench-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes gear-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .street-nav-link {
+            font-family: 'Electrolize', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--dim-white) !important;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 8px 16px !important;
+            margin: 0 4px;
+            background: rgba(26, 26, 26, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .street-nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .street-nav-link:hover {
+            color: var(--underground-black) !important;
+            border-color: var(--neon-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 204, 255, 0.4);
+        }
+        
+        .street-nav-link:hover::before {
+            width: 100%;
+        }
+        
+        .contact-urgent {
+            background: linear-gradient(45deg, var(--danger-red), var(--warning-orange));
+            animation: urgent-pulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes urgent-pulse {
+            0% { 
+                box-shadow: 0 0 10px var(--danger-red);
+                transform: scale(1);
+            }
+            100% { 
+                box-shadow: 0 0 20px var(--warning-orange);
+                transform: scale(1.05);
+            }
+        }
+        
+        /* UNDERGROUND FOOTER */
+        .underground-footer {
+            background: linear-gradient(180deg, var(--street-dark) 0%, var(--underground-black) 100%);
+            border-top: 2px solid var(--neon-blue);
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .underground-footer::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--danger-red) 25%, 
+                var(--neon-blue) 50%, 
+                var(--neon-green) 75%, 
+                transparent 100%);
+            animation: street-scanner 4s linear infinite;
+        }
+        
+        @keyframes street-scanner {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .garage-title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            font-size: 0.9rem;
+            color: var(--dim-white);
+            margin-bottom: 8px;
+        }
+        
+        .contact-info i {
+            width: 20px;
+            margin-right: 10px;
+        }
+        
+        .warning-notice {
+            background: rgba(255, 96, 0, 0.1);
+            border: 1px solid var(--warning-orange);
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .warning-icon {
+            color: var(--warning-orange);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px var(--warning-orange));
+        }
+        
+        .street-creds {
+            text-align: right;
+        }
+        
+        .cred-badge {
+            background: rgba(0, 204, 255, 0.2);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 4px 8px;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin: 2px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .street-signature {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .signature-text {
+            font-family: 'Electrolize', sans-serif;
+            font-size: 1rem;
+            color: var(--dim-white);
+            margin-bottom: 10px;
+        }
+        
+        .copyright-text {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .garage-logo {
+                font-size: 1.2rem;
+            }
+            
+            .street-nav-link {
+                font-size: 0.8rem;
+                padding: 6px 12px !important;
+                margin: 2px;
+            }
+            
+            .underground-footer .row > div {
+                margin-bottom: 30px;
+            }
+            
+            .street-creds {
+                text-align: center;
+            }
+        }
+        
+        /* SUBTLE ANIMATIONS */
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .neon-flicker {
+            animation: flicker 3s ease-in-out infinite;
+        }
+        
+        /* SCROLLBAR STYLING */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--street-dark);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-blue);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-green);
+        }
+    </style>
+</head>
+<body>
+    <!-- Underground Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top underground-nav" id="mainNav">
+        <div class="container">
+            <a class="garage-logo" href="{% url 'garage:home' %}">
+                <div class="logo-icon">
+                    <i class="fas fa-wrench logo-wrench"></i>
+                    <i class="fas fa-cog logo-gear"></i>
+                </div>
+                <span>TIMMY'S UNDERGROUND</span>
+            </a>
+            
+            <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span style="color: var(--neon-blue); font-size: 1.5rem;">
+                    <i class="fas fa-bars"></i>
+                </span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link street-nav-link" href="{% url 'garage:home' %}">
+                            <i class="fas fa-home me-1"></i>HOME
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link street-nav-link" href="{% url 'garage:services' %}">
+                            <i class="fas fa-tools me-1"></i>BUILDS
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link street-nav-link" href="{% url 'garage:gallery' %}">
+                            <i class="fas fa-trophy me-1"></i>LEGENDS
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link street-nav-link" href="{% url 'garage:about' %}">
+                            <i class="fas fa-users me-1"></i>CREW
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link street-nav-link contact-urgent" href="{% url 'garage:contact' %}">
+                            <i class="fas fa-phone me-1"></i>CONNECT
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="pt-5">
+        {% block content %}
+        <!-- Sample Content for Demo -->
+        <div class="container mt-5 pt-5">
+            <div class="text-center">
+                <h1 class="neon-blue-glow mb-4" style="font-family: 'Orbitron', monospace; font-size: 3rem; font-weight: 900;">
+                    WHERE LEGENDS ARE BUILT
+                </h1>
+                <p class="lead" style="color: var(--dim-white); font-size: 1.2rem;">
+                    We don't fix grocery getters. We build street legends.
+                </p>
+            </div>
+        </div>
+        {% endblock %}
+    </main>
+
+    <!-- Underground Footer -->
+    <footer class="underground-footer">
+        <div class="container">
+            <div class="row">
+                <!-- Garage Info -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="garage-title neon-blue-glow neon-flicker">TIMMY'S UNDERGROUND</h5>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt neon-red-glow"></i>
+                        2847 Underground Blvd, Motor City
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone neon-blue-glow"></i>
+                        (555) TUNE-NOW
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope neon-green-glow"></i>
+                        legends@timmysgarage.com
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-clock text-warning"></i>
+                        11PM - 6AM (When the streets are alive)
+                    </div>
+                </div>
+                
+                <!-- Warning Notice -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="warning-notice">
+                        <div class="warning-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h6 style="color: var(--warning-orange); font-weight: 600; margin-bottom: 10px;">
+                            PERFORMANCE ONLY
+                        </h6>
+                        <p style="font-size: 0.9rem; color: var(--dim-white); margin-bottom: 5px;">
+                            No oil changes. No tire rotations.
+                        </p>
+                        <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); margin: 0;">
+                            We build legends, not fix minivans.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Street Creds -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="street-creds">
+                        <h6 class="neon-green-glow mb-3" style="font-weight: 600;">STREET CERTIFIED</h6>
+                        <div class="mb-3">
+                            <span class="cred-badge">15+ YEARS</span>
+                            <span class="cred-badge">200+ BUILDS</span>
+                            <span class="cred-badge">ZERO FAILS</span>
+                            <span class="cred-badge">STREET PROVEN</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.7);">
+                            Respect earned on midnight streets.<br>
+                            Legends built in the shadows.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Street Signature -->
+            <div class="street-signature">
+                <p class="signature-text">
+                    <i class="fas fa-skull neon-red-glow me-2"></i>
+                    BUILT IN THE SHADOWS. PROVEN ON THE STREETS.
+                    <i class="fas fa-skull neon-red-glow ms-2"></i>
+                </p>
+                <p class="copyright-text">
+                    © 2024 Timmy's Underground Garage. Licensed to thrill.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Underground Navigation Effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('mainNav');
+            
+            // Scroll effect for navbar
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Random neon flicker effect
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    const neonElements = document.querySelectorAll('.neon-blue-glow, .neon-green-glow, .neon-red-glow');
+                    const randomElement = neonElements[Math.floor(Math.random() * neonElements.length)];
+                    randomElement.style.textShadow = '0 0 2px currentColor';
+                    
+                    setTimeout(() => {
+                        randomElement.style.textShadow = '0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor';
+                    }, 100);
+                }
+            }, 3000);
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

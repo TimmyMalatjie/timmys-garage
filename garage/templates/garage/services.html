@@ -1,0 +1,243 @@
+<!-- garage/templates/garage/services.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<!-- Services Hero -->
+<section class="hero-section" style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('{% static "images/Garage.png" %}') center/cover;">
+    <div class="hero-content">
+        <h1 class="display-2">PERFORMANCE SERVICES</h1>
+        <p class="lead">From street to track, we build legends</p>
+    </div>
+</section>
+
+<!-- Services Content -->
+<section class="section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="section-title">WHAT WE DO</h2>
+                <p class="lead text-light-gray mb-5">Professional modifications that transform your ride into a performance machine</p>
+            </div>
+        </div>
+
+        <!-- Services Categories -->
+        {% for category, service_list in services.items %}
+        <div class="service-category">
+            <h3 class="d-flex align-items-center mb-4">
+                {% if "Engine" in category %}
+                    <i class="fas fa-cog fa-2x me-3 text-primary"></i>
+                {% elif "Aesthetics" in category %}
+                    <i class="fas fa-palette fa-2x me-3 text-danger"></i>
+                {% elif "Handling" in category %}
+                    <i class="fas fa-road fa-2x me-3" style="color: var(--neon-green);"></i>
+                {% elif "Interior" in category %}
+                    <i class="fas fa-chair fa-2x me-3 text-warning"></i>
+                {% endif %}
+                {{ category }}
+            </h3>
+            
+            <div class="row g-3">
+                {% for service in service_list %}
+                <div class="col-lg-6">
+                    <div class="service-item">
+                        <h5>{{ service.name }}</h5>
+                        <p>{{ service.desc }}</p>
+                        <div class="service-pricing">
+                            <span class="badge bg-primary">CALL FOR QUOTE</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">OUR PROCESS</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="process-step text-center">
+                    <div class="step-number">01</div>
+                    <h4 class="text-primary">CONSULTATION</h4>
+                    <p class="text-light-gray">Tell us your vision. We'll make it reality.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="process-step text-center">
+                    <div class="step-number">02</div>
+                    <h4 class="text-primary">CUSTOM QUOTE</h4>
+                    <p class="text-light-gray">Detailed breakdown. No hidden costs.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="process-step text-center">
+                    <div class="step-number">03</div>
+                    <h4 class="text-primary">PROFESSIONAL BUILD</h4>
+                    <p class="text-light-gray">Master craftsmen. Quality parts. Legendary results.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="process-step text-center">
+                    <div class="step-number">04</div>
+                    <h4 class="text-primary">STREET LEGEND</h4>
+                    <p class="text-light-gray">Drive away in a machine that commands respect.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">INVESTMENT LEVELS</h2>
+                <p class="lead text-light-gray mb-5">Quality builds require quality investment. We work with serious builders.</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="pricing-tier">
+                            <h4 class="text-success">STREET BUILD</h4>
+                            <div class="price-range">$5K - $15K</div>
+                            <ul class="feature-list">
+                                <li>Basic performance upgrades</li>
+                                <li>Bolt-on modifications</li>
+                                <li>Aesthetic improvements</li>
+                                <li>Daily driver friendly</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="pricing-tier featured">
+                            <h4 class="text-primary">TRACK BEAST</h4>
+                            <div class="price-range">$15K - $40K</div>
+                            <ul class="feature-list">
+                                <li>Engine swaps</li>
+                                <li>Turbo/Supercharger systems</li>
+                                <li>Suspension overhauls</li>
+                                <li>Custom fabrication</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="pricing-tier">
+                            <h4 class="text-danger">SHOW STOPPER</h4>
+                            <div class="price-range">$40K+</div>
+                            <ul class="feature-list">
+                                <li>Full custom builds</li>
+                                <li>Show-quality paint</li>
+                                <li>Racing preparation</li>
+                                <li>One-of-a-kind builds</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-5">
+                    <p class="text-warning fw-bold mb-3">IMPORTANT: NO BASIC MAINTENANCE</p>
+                    <p class="text-light-gray">We don't do oil changes, tire rotations, or brake pads. We're a performance shop - we build race cars, not fix grocery getters.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section section-dark">
+    <div class="container text-center">
+        <h2 class="section-title">READY TO START YOUR BUILD?</h2>
+        <p class="lead mb-5 text-light-gray">Every legend starts with a conversation. Let's talk about your vision.</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="{% url 'garage:contact' %}" class="btn btn-primary btn-lg">GET CUSTOM QUOTE</a>
+            <a href="{% url 'garage:gallery' %}" class="btn btn-outline-primary btn-lg">VIEW OUR WORK</a>
+        </div>
+    </div>
+</section>
+
+<!-- Custom CSS for services page -->
+<style>
+.process-step {
+    padding: 2rem 1rem;
+}
+
+.step-number {
+    font-family: 'Orbitron', monospace;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--electric-blue);
+    text-shadow: 0 0 15px var(--electric-blue);
+    margin-bottom: 1rem;
+}
+
+.pricing-tier {
+    background: var(--dark-gray);
+    border: 2px solid var(--electric-blue);
+    border-radius: 15px;
+    padding: 2rem;
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pricing-tier.featured {
+    border-color: var(--neon-green);
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(57, 255, 20, 0.2);
+}
+
+.pricing-tier:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
+}
+
+.pricing-tier.featured:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.price-range {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--neon-green);
+    margin: 1rem 0;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    color: var(--light-gray);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.feature-list li::before {
+    content: '▶';
+    color: var(--electric-blue);
+    position: absolute;
+    left: 0;
+}
+
+.service-pricing .badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+.text-light-gray {
+    color: var(--light-gray);
+}
+</style>
+{% endblock %}
