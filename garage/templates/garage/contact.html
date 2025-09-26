@@ -6,17 +6,17 @@
 
 {% block content %}
 <!-- Contact Hero -->
-<section class="hero-section" style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('{% static "images/Garage.png" %}') center/cover;">
-    <div class="hero-content">
+<section class="hero-section" style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('{% static "images/Garage.png" %}') center/cover; display: flex; align-items: center; justify-content: center;">
+    <div class="hero-content text-center" style="max-width: 800px; padding: 0 20px;">
         <h1 class="display-2">GET YOUR BUILD STARTED</h1>
         <p class="lead">Every legend starts with a conversation</p>
     </div>
 </section>
 
 <!-- Contact Content -->
-<section class="section">
+<section class="section" style="padding: 100px 0;">
     <div class="container">
-        <div class="row">
+        <div class="row g-5">
             <!-- Contact Form -->
             <div class="col-lg-8">
                 <div class="contact-form">
@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="buildType" class="form-label">BUILD TYPE</label>
-                                <select class="street-select" id="buildType" name="build_type">
+                                <select class="form-control" id="buildType" name="build_type">
                                     <option value="">Select your build type...</option>
                                     <option value="street">Street Build ($5K - $15K)</option>
                                     <option value="track">Track Beast ($15K - $40K)</option>
@@ -127,7 +127,7 @@
                     </div>
                     
                     <div class="emergency-contact p-4">
-                        <h6 class="text-danger mb-3">URGENT BUILDS?</h6>
+                        <h6 class="text-white mb-3">URGENT BUILDS?</h6>
                         <p class="text-light-gray small mb-2">Got a race this weekend? Event coming up?</p>
                         <p class="text-light-gray small">Call us directly - we sometimes work nights for rush jobs.</p>
                         <a href="tel:555-TUNE-NOW" class="btn btn-danger btn-sm mt-2">CALL FOR RUSH SERVICE</a>
@@ -139,9 +139,13 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="section section-dark">
+<section class="section section-dark" style="padding: 100px 0;">
     <div class="container">
-        <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="accordion" id="faqAccordion">
@@ -216,12 +220,12 @@
 </section>
 
 <!-- Location Section -->
-<section class="section">
+<section class="section" style="padding: 100px 0;">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="section-title">FIND US</h2>
-                <div class="location-info p-5 rounded neon-border mx-auto" style="max-width: 600px; background: var(--dark-gray);">
+                <h2 class="section-title mb-5">FIND US</h2>
+                <div class="location-info p-5 rounded neon-border mx-auto" style="max-width: 600px;">
                     <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
                     <h4 class="text-primary mb-3">{{ garage_info.address }}</h4>
                     <p class="text-light-gray mb-4">Located in the heart of Motor City's underground racing scene. Look for the shop with the loudest exhausts and the brightest underglow.</p>
@@ -241,37 +245,78 @@
 
 <!-- Custom CSS for contact page -->
 <style>
-.contact-form {
-    background: var(--dark-gray);
-    padding: 3rem;
-    border-radius: 15px;
-    border: 2px solid var(--electric-blue);
+/* Hero section */
+.hero-section .hero-content h1 {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    color: var(--pure-white);
+    text-shadow: 0 0 30px var(--neon-blue);
+    margin-bottom: 20px;
+}
+
+.hero-section .hero-content p {
+    color: var(--dim-white);
+    font-size: 1.3rem;
+}
+
+/* Section styling */
+.section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.section-dark {
+    background: linear-gradient(135deg, var(--street-dark) 0%, var(--asphalt-gray) 100%);
+    border-top: 1px solid rgba(0, 204, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 204, 255, 0.3);
+}
+
+.section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px var(--neon-blue);
     margin-bottom: 2rem;
 }
 
+/* Contact form */
+.contact-form {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 2px solid var(--neon-blue);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+/* Contact info */
 .contact-info {
-    background: var(--charcoal);
+    background: linear-gradient(135deg, rgba(36, 36, 36, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
     padding: 2rem;
     border-radius: 15px;
     height: fit-content;
     position: sticky;
     top: 100px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(0, 204, 255, 0.3);
 }
 
 .contact-method {
     display: flex;
-    align-items-flex-start;
+    align-items: flex-start;
     gap: 1rem;
     padding: 1.5rem;
-    background: var(--dark-gray);
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(18, 18, 18, 0.9) 100%);
     border-radius: 10px;
-    border: 1px solid transparent;
+    border: 1px solid rgba(0, 204, 255, 0.3);
     transition: all 0.3s ease;
 }
 
 .contact-method:hover {
-    border-color: var(--electric-blue);
+    border-color: var(--neon-blue);
     transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(0, 204, 255, 0.2);
 }
 
 .contact-icon {
@@ -280,78 +325,139 @@
 
 .contact-details h5 {
     margin-bottom: 0.5rem;
+    font-family: 'Electrolize', sans-serif;
 }
 
 .hours-box {
-    background: var(--dark-gray);
-    border: 1px solid var(--electric-blue);
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(18, 18, 18, 0.9) 100%);
+    border: 1px solid var(--neon-blue);
     border-radius: 10px;
 }
 
 .emergency-contact {
-    background: linear-gradient(135deg, var(--deep-red), #aa0000);
+    background: linear-gradient(135deg, var(--danger-red), #aa0000);
     border-radius: 10px;
     text-align: center;
 }
 
+/* Form controls */
 .form-control {
-    background: var(--charcoal);
-    border: 2px solid var(--dark-gray);
-    color: var(--white);
+    background: linear-gradient(135deg, rgba(36, 36, 36, 0.9) 0%, rgba(24, 24, 24, 0.9) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--pure-white);
     padding: 12px 15px;
     font-size: 1rem;
     transition: all 0.3s ease;
+    border-radius: 5px;
 }
 
 .form-control:focus {
-    background: var(--charcoal);
-    border-color: var(--electric-blue);
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
-    color: var(--white);
+    background: linear-gradient(135deg, rgba(36, 36, 36, 0.9) 0%, rgba(24, 24, 24, 0.9) 100%);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.3);
+    color: var(--pure-white);
 }
 
 .form-control::placeholder {
-    color: var(--light-gray);
+    color: var(--dim-white);
 }
 
 .form-label {
-    color: var(--electric-blue);
+    color: var(--neon-blue);
     font-weight: 600;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
     letter-spacing: 1px;
+    font-family: 'Electrolize', sans-serif;
+    text-transform: uppercase;
 }
 
 .form-check-input:checked {
-    background-color: var(--electric-blue);
-    border-color: var(--electric-blue);
+    background-color: var(--neon-blue);
+    border-color: var(--neon-blue);
 }
 
+/* Accordion styling */
 .accordion-button {
     font-weight: 600;
     border: none !important;
     box-shadow: none !important;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: var(--electric-blue) !important;
-    color: white !important;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-green)) !important;
+    color: var(--underground-black) !important;
 }
 
 .accordion-item {
     border-radius: 10px !important;
     overflow: hidden;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%);
+    border: 2px solid rgba(0, 204, 255, 0.3) !important;
 }
 
+/* Location info */
 .location-info {
-    background: var(--dark-gray);
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%);
+    backdrop-filter: blur(10px);
 }
 
+.neon-border {
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.3);
+}
+
+/* Utility classes */
 .text-light-gray {
-    color: var(--light-gray);
+    color: var(--dim-white);
 }
 
+/* Button styling */
+.btn-primary {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+    border: none;
+    color: var(--underground-black);
+    font-family: 'Electrolize', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 204, 255, 0.4);
+    color: var(--underground-black);
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, var(--danger-red), var(--warning-orange));
+    border: none;
+    color: var(--pure-white);
+    font-family: 'Electrolize', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 0, 64, 0.4);
+    color: var(--pure-white);
+}
+
+/* Mobile responsiveness */
 @media (max-width: 768px) {
+    .hero-section .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
     .contact-form,
     .contact-info {
         padding: 1.5rem;
@@ -366,6 +472,26 @@
     .contact-method {
         flex-direction: column;
         text-align: center;
+    }
+    
+    .d-flex.gap-3 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .d-flex.gap-3 .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .section {
+        padding: 60px 0 !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .location-info {
+        padding: 2rem !important;
     }
 }
 </style>

@@ -6,17 +6,17 @@
 
 {% block content %}
 <!-- About Hero -->
-<section class="hero-section" style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('{% static "images/Garage.png" %}') center/cover;">
-    <div class="hero-content">
+<section class="hero-section" style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('{% static "images/Garage.png" %}') center/cover; display: flex; align-items: center; justify-content: center;">
+    <div class="hero-content text-center" style="max-width: 800px; padding: 0 20px;">
         <h1 class="display-2">BUILT BY PASSION</h1>
         <p class="lead">Driven by Performance</p>
     </div>
 </section>
 
 <!-- About Content -->
-<section class="section">
+<section class="section" style="padding: 100px 0;">
     <div class="container">
-        <div class="row align-items-center mb-5">
+        <div class="row align-items-center mb-5 g-5">
             <div class="col-lg-6">
                 <div class="about-image">
                     <img src="{% static 'images/timmy.jpg' %}" alt="Timmy - Owner" class="img-fluid rounded neon-border" onerror="this.src='https://via.placeholder.com/500x400/1a1a1a/00d4ff?text=Timmy+-+Owner'">
@@ -49,7 +49,7 @@
                     </ul>
                 </div>
                 
-                <blockquote class="blockquote text-center p-4" style="background: var(--dark-gray); border-left: 4px solid var(--electric-blue); border-radius: 10px;">
+                <blockquote class="blockquote text-center p-4" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%); border-left: 4px solid var(--neon-blue); border-radius: 10px;">
                     <p class="mb-3 text-light-gray">"We don't just modify cars - we create automotive art that happens to go really, really fast."</p>
                     <footer class="blockquote-footer text-primary">{{ owner_name }}</footer>
                 </blockquote>
@@ -59,11 +59,15 @@
 </section>
 
 <!-- Stats Section -->
-<section class="section section-dark">
+<section class="section section-dark" style="padding: 100px 0;">
     <div class="container">
-        <h2 class="section-title">BY THE NUMBERS</h2>
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">BY THE NUMBERS</h2>
+            </div>
+        </div>
         <div class="row g-4">
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="about-stats text-center">
                     <div class="stat-item">
                         <span class="stat-number">{{ experience_years }}</span>
@@ -71,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="about-stats text-center">
                     <div class="stat-item">
                         <span class="stat-number">200+</span>
@@ -79,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="about-stats text-center">
                     <div class="stat-item">
                         <span class="stat-number">98%</span>
@@ -87,7 +91,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="about-stats text-center">
                     <div class="stat-item">
                         <span class="stat-number">∞</span>
@@ -100,11 +104,13 @@
 </section>
 
 <!-- Specializations Section -->
-<section class="section">
+<section class="section" style="padding: 100px 0;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="section-title">OUR SPECIALIZATIONS</h2>
+                <div class="text-center mb-5">
+                    <h2 class="section-title">OUR SPECIALIZATIONS</h2>
+                </div>
                 <div class="row g-4">
                     {% for specialization in specializations %}
                     <div class="col-md-6">
@@ -138,12 +144,14 @@
 </section>
 
 <!-- Philosophy Section -->
-<section class="section section-dark">
+<section class="section section-dark" style="padding: 100px 0;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 mx-auto text-center">
-                <h2 class="section-title">OUR PHILOSOPHY</h2>
-                <div class="row g-4 mt-4">
+            <div class="col-lg-10 mx-auto">
+                <div class="text-center mb-5">
+                    <h2 class="section-title">OUR PHILOSOPHY</h2>
+                </div>
+                <div class="row g-4">
                     <div class="col-md-4">
                         <div class="philosophy-item">
                             <i class="fas fa-heart fa-3x text-danger mb-3"></i>
@@ -172,12 +180,14 @@
 </section>
 
 <!-- What We Don't Do Section -->
-<section class="section">
+<section class="section" style="padding: 100px 0;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-title text-danger">WHAT WE DON'T DO</h2>
-                <div class="dont-do-box p-5 rounded" style="background: var(--dark-gray); border: 2px solid var(--deep-red);">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center mb-5">
+                    <h2 class="section-title text-danger">WHAT WE DON'T DO</h2>
+                </div>
+                <div class="dont-do-box p-5 rounded" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%); border: 2px solid var(--danger-red);">
                     <div class="row g-4">
                         <div class="col-md-6">
                             <div class="dont-item">
@@ -208,7 +218,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="my-4" style="border-color: var(--deep-red);">
+                    <hr class="my-4" style="border-color: var(--danger-red);">
                     <h4 class="text-primary mb-3">WE'RE A PERFORMANCE SHOP</h4>
                     <p class="text-light-gray mb-0">We build race cars. We create street legends. We turn dreams into reality. That's what we do, and we do it better than anyone.</p>
                 </div>
@@ -218,10 +228,14 @@
 </section>
 
 <!-- Team Section -->
-<section class="section section-dark">
+<section class="section section-dark" style="padding: 100px 0;">
     <div class="container">
-        <h2 class="section-title">THE CREW</h2>
-        <div class="row g-4">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">THE CREW</h2>
+            </div>
+        </div>
+        <div class="row g-4 justify-content-center">
             <div class="col-lg-3 col-md-6">
                 <div class="team-member text-center">
                     <img src="{% static 'images/timmy.jpg' %}" alt="Timmy - Owner" class="team-photo mb-3" onerror="this.src='https://via.placeholder.com/200x200/1a1a1a/00d4ff?text=Timmy'">
@@ -232,24 +246,24 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="team-member text-center">
-                    <img src="{% static 'images/betty.png' %}" alt="Betty - Engine Specialist" class="team-photo mb-3" onerror="this.src='https://via.placeholder.com/200x200/1a1a1a/cc0000?text=Timmy'">
-                    <h4 class="text-primary">Betty</h4>
+                    <img src="{% static 'images/betty.png' %}" alt="Betty - Engine Specialist" class="team-photo mb-3" onerror="this.src='https://via.placeholder.com/200x200/1a1a1a/cc0000?text=Betty'">
+                    <h4 class="text-primary">BETTY</h4>
                     <p class="text-danger small mb-2">ENGINE SPECIALIST</p>
                     <p class="text-light-gray small">The wizard with engine swaps. If it has pistons and cylinders, Betty can make it scream.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="team-member text-center">
-                    <img src="{% static 'images/Carlos.png' %}" alt="Carlos - Paint Specialist" class="team-photo mb-3" onerror="this.src='https://via.placeholder.com/200x200/1a1a1a/39ff14?text=Mike'">
-                    <h4 class="text-primary">Carlos</h4>
+                    <img src="{% static 'images/Carlos.png' %}" alt="Carlos - Paint Specialist" class="team-photo mb-3" onerror="this.src='https://via.placeholder.com/200x200/1a1a1a/39ff14?text=Carlos'">
+                    <h4 class="text-primary">CARLOS</h4>
                     <p class="text-danger small mb-2">PAINT SPECIALIST</p>
                     <p class="text-light-gray small">Artist with a spray gun. Custom colors that make people stop and stare.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="team-member text-center">
-                    <img src="{% static 'images/Mike.png' %}" alt="Carlos - Suspension Expert" class="team-photo mb-3" onerror="this.src='https://via.placeholder.com/200x200/1a1a1a/ff6600?text=Carlos'">
-                    <h4 class="text-primary">Mike</h4>
+                    <img src="{% static 'images/Mike.png' %}" alt="Mike - Suspension Expert" class="team-photo mb-3" onerror="this.src='https://via.placeholder.com/200x200/1a1a1a/ff6600?text=Mike'">
+                    <h4 class="text-primary">MIKE</h4>
                     <p class="text-danger small mb-2">SUSPENSION EXPERT</p>
                     <p class="text-light-gray small">Makes cars handle like they're on rails. Track day champion in his own right.</p>
                 </div>
@@ -259,58 +273,140 @@
 </section>
 
 <!-- CTA Section -->
-<section class="section">
-    <div class="container text-center">
-        <h2 class="section-title">READY TO JOIN THE LEGEND?</h2>
-        <p class="lead mb-5 text-light-gray">Every great build starts with a conversation. Let's talk about your vision.</p>
-        <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a href="{% url 'garage:contact' %}" class="btn btn-primary btn-lg">GET YOUR QUOTE</a>
-            <a href="{% url 'garage:gallery' %}" class="btn btn-outline-primary btn-lg">SEE OUR WORK</a>
+<section class="section" style="padding: 100px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title">READY TO JOIN THE LEGEND?</h2>
+                <p class="lead mb-5 text-light-gray">Every great build starts with a conversation. Let's talk about your vision.</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="{% url 'garage:contact' %}" class="btn btn-primary btn-lg">GET YOUR QUOTE</a>
+                    <a href="{% url 'garage:gallery' %}" class="btn btn-outline-primary btn-lg">SEE OUR WORK</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Custom CSS for about page -->
 <style>
+/* Hero section */
+.hero-section .hero-content h1 {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    color: var(--pure-white);
+    text-shadow: 0 0 30px var(--neon-blue);
+    margin-bottom: 20px;
+}
+
+.hero-section .hero-content p {
+    color: var(--dim-white);
+    font-size: 1.3rem;
+}
+
+/* Section styling */
+.section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.section-dark {
+    background: linear-gradient(135deg, var(--street-dark) 0%, var(--asphalt-gray) 100%);
+    border-top: 1px solid rgba(0, 204, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 204, 255, 0.3);
+}
+
+.section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px var(--neon-blue);
+    margin-bottom: 2rem;
+}
+
+/* About image */
 .about-image img {
     max-height: 400px;
     object-fit: cover;
 }
 
+.neon-border {
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.3);
+}
+
+/* Stats */
+.about-stats {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%);
+    border-radius: 15px;
+    border: 2px solid rgba(0, 204, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.about-stats:hover {
+    border-color: var(--neon-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 204, 255, 0.2);
+}
+
+.stat-number {
+    font-family: 'Orbitron', monospace;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--neon-green);
+    text-shadow: 0 0 15px var(--neon-green);
+    display: block;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: var(--dim-white);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Electrolize', sans-serif;
+}
+
+/* Specialization cards */
 .specialization-card {
-    background: var(--dark-gray);
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%);
     padding: 2rem;
     border-radius: 15px;
-    border: 2px solid transparent;
+    border: 2px solid rgba(0, 204, 255, 0.3);
     text-align: center;
     height: 100%;
     transition: all 0.3s ease;
 }
 
 .specialization-card:hover {
-    border-color: var(--electric-blue);
+    border-color: var(--neon-blue);
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 204, 255, 0.2);
 }
 
+/* Philosophy items */
 .philosophy-item {
     text-align: center;
     padding: 1.5rem;
 }
 
+/* Team members */
 .team-member {
-    background: var(--dark-gray);
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%);
     padding: 2rem 1.5rem;
     border-radius: 15px;
-    border: 2px solid transparent;
+    border: 2px solid rgba(0, 204, 255, 0.3);
     transition: all 0.3s ease;
     height: 100%;
 }
 
 .team-member:hover {
-    border-color: var(--electric-blue);
+    border-color: var(--neon-blue);
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 204, 255, 0.2);
 }
 
 .team-photo {
@@ -318,7 +414,7 @@
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--electric-blue);
+    border: 3px solid var(--neon-blue);
     transition: all 0.3s ease;
 }
 
@@ -327,15 +423,63 @@
     transform: scale(1.1);
 }
 
+/* Don't do section */
 .dont-item {
     padding: 1rem;
+    text-align: center;
 }
 
+/* Utility classes */
 .text-light-gray {
-    color: var(--light-gray);
+    color: var(--dim-white);
 }
 
+/* Button styling */
+.btn-primary {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+    border: none;
+    color: var(--underground-black);
+    font-family: 'Electrolize', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 204, 255, 0.4);
+    color: var(--underground-black);
+}
+
+.btn-outline-primary {
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    font-family: 'Electrolize', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background: var(--neon-blue);
+    color: var(--underground-black);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 204, 255, 0.4);
+}
+
+/* Mobile responsiveness */
 @media (max-width: 768px) {
+    .hero-section .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
     .about-image {
         margin-bottom: 3rem;
     }
@@ -343,6 +487,38 @@
     .philosophy-item,
     .dont-item {
         margin-bottom: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .d-flex.gap-3 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .d-flex.gap-3 .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .section {
+        padding: 60px 0 !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .dont-do-box {
+        padding: 2rem !important;
+    }
+    
+    .team-member {
+        padding: 1.5rem !important;
+    }
+    
+    .specialization-card {
+        padding: 1.5rem;
     }
 }
 </style>

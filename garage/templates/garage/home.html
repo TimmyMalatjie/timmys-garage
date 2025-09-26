@@ -6,8 +6,8 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-section">
-    <div class="hero-content">
+<section class="hero-section" style="height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('{% static "images/hero-bg.jpg" %}') center/cover; display: flex; align-items: center; justify-content: center; position: relative;">
+    <div class="hero-content text-center" style="max-width: 800px; padding: 0 20px;">
         <h1 class="display-1">{{ hero_title }}</h1>
         <p class="lead">{{ mission_statement }}</p>
         <div class="mt-4">
@@ -15,19 +15,18 @@
             <a href="{% url 'garage:contact' %}" class="btn btn-danger btn-lg">GET QUOTE</a>
         </div>
     </div>
-    
-    <!-- Scroll indicator -->
-    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4">
-        <i class="fas fa-chevron-down fa-2x text-primary animate-bounce"></i>
-    </div>
 </section>
 
 <!-- Quick Services Preview -->
-<section class="section section-dark">
+<section class="section section-dark" style="padding: 100px 0;">
     <div class="container">
-        <h2 class="section-title">WHAT WE BUILD</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">WHAT WE BUILD</h2>
+            </div>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6">
                 <div class="service-preview text-center h-100">
                     <div class="service-icon mb-3">
                         <i class="fas fa-cog fa-4x text-primary"></i>
@@ -41,7 +40,7 @@
                 </div>
             </div>
             
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-6">
                 <div class="service-preview text-center h-100">
                     <div class="service-icon mb-3">
                         <i class="fas fa-palette fa-4x text-danger"></i>
@@ -55,7 +54,7 @@
                 </div>
             </div>
             
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-6">
                 <div class="service-preview text-center h-100">
                     <div class="service-icon mb-3">
                         <i class="fas fa-road fa-4x" style="color: var(--neon-green);"></i>
@@ -73,10 +72,10 @@
 </section>
 
 <!-- Featured Work Section -->
-<section class="section">
+<section class="section" style="padding: 100px 0;">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
                 <h2 class="section-title text-start">LATEST BUILD</h2>
                 <h3 class="text-primary mb-3">2023 Nissan Z - The Beast</h3>
                 <ul class="list-unstyled mb-4">
@@ -101,7 +100,7 @@
                 </div>
                 <a href="{% url 'garage:gallery' %}" class="btn btn-primary">VIEW FULL GALLERY</a>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-5">
                 <div class="featured-image-container">
                     <img src="{% static 'images/featured-z.png' %}" alt="Featured Nissan Z Build" class="img-fluid rounded neon-border">
                 </div>
@@ -111,10 +110,14 @@
 </section>
 
 <!-- Call to Action -->
-<section class="section section-dark">
-    <div class="container text-center">
-        <h2 class="section-title">READY TO BUILD YOUR LEGEND?</h2>
-        <p class="lead mb-5 text-light-gray">Don't settle for stock. Let's build something that commands respect on the streets.</p>
+<section class="section section-dark" style="padding: 100px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">READY TO BUILD YOUR LEGEND?</h2>
+                <p class="lead mb-5 text-light-gray">Don't settle for stock. Let's build something that commands respect on the streets.</p>
+            </div>
+        </div>
         
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -134,18 +137,56 @@
 
 <!-- Custom CSS for home page specific styles -->
 <style>
+/* Hero section */
+.hero-section .hero-content h1 {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    color: var(--pure-white);
+    text-shadow: 0 0 30px var(--neon-blue);
+    margin-bottom: 30px;
+}
+
+.hero-section .hero-content p {
+    font-size: 1.5rem;
+    color: var(--dim-white);
+    margin-bottom: 40px;
+}
+
+/* Section styling */
+.section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.section-dark {
+    background: linear-gradient(135deg, var(--street-dark) 0%, var(--asphalt-gray) 100%);
+    border-top: 1px solid rgba(0, 204, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 204, 255, 0.3);
+}
+
+.section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px var(--neon-blue);
+    margin-bottom: 2rem;
+}
+
+/* Service previews */
 .service-preview {
-    background: var(--dark-gray);
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%);
     padding: 2rem;
     border-radius: 10px;
-    border: 2px solid transparent;
+    border: 2px solid rgba(0, 204, 255, 0.3);
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .service-preview:hover {
-    border-color: var(--electric-blue);
+    border-color: var(--neon-blue);
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 204, 255, 0.2);
 }
 
 .service-icon {
@@ -156,6 +197,17 @@
     transform: scale(1.1);
 }
 
+.performance-number {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--neon-green);
+    text-shadow: 0 0 15px var(--neon-green);
+    display: block;
+    line-height: 1;
+}
+
+/* Featured work section */
 .featured-image-container {
     position: relative;
     overflow: hidden;
@@ -169,33 +221,103 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(57, 255, 20, 0.1));
+    background: linear-gradient(45deg, rgba(0, 204, 255, 0.1), rgba(57, 255, 20, 0.1));
     z-index: 1;
     border-radius: 10px;
 }
 
+.neon-border {
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.3);
+}
+
+/* CTA section */
 .cta-box {
-    background: linear-gradient(135deg, var(--charcoal), var(--dark-gray));
+    background: linear-gradient(135deg, rgba(36, 36, 36, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+    backdrop-filter: blur(15px);
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
-}
-
-.animate-bounce {
-    animation: bounce 2s infinite;
-}
-
+/* Utility classes */
 .text-light-gray {
-    color: var(--light-gray);
+    color: var(--dim-white);
+}
+
+/* Button styling */
+.btn-primary {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+    border: none;
+    color: var(--underground-black);
+    font-family: 'Electrolize', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 204, 255, 0.4);
+    color: var(--underground-black);
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, var(--danger-red), var(--warning-orange));
+    border: none;
+    color: var(--pure-white);
+    font-family: 'Electrolize', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 0, 64, 0.4);
+    color: var(--pure-white);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .hero-section .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .performance-number {
+        font-size: 2rem;
+    }
+    
+    .service-preview {
+        margin-bottom: 2rem;
+    }
+    
+    .d-flex.gap-3 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .d-flex.gap-3 .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .cta-box {
+        padding: 2rem !important;
+    }
+    
+    .service-preview {
+        padding: 1.5rem;
+    }
+    
+    .section {
+        padding: 60px 0 !important;
+    }
 }
 </style>
 {% endblock %}

@@ -6,15 +6,15 @@
 
 {% block content %}
 <!-- Services Hero -->
-<section class="hero-section" style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('{% static "images/Garage.png" %}') center/cover;">
-    <div class="hero-content">
+<section class="hero-section" style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('{% static "images/Garage.png" %}') center/cover; display: flex; align-items: center; justify-content: center;">
+    <div class="hero-content text-center" style="max-width: 800px; padding: 0 20px;">
         <h1 class="display-2">PERFORMANCE SERVICES</h1>
         <p class="lead">From street to track, we build legends</p>
     </div>
 </section>
 
 <!-- Services Content -->
-<section class="section">
+<section class="section" style="padding: 100px 0;">
     <div class="container">
         <div class="row mb-5">
             <div class="col-12 text-center">
@@ -25,28 +25,32 @@
 
         <!-- Services Categories -->
         {% for category, service_list in services.items %}
-        <div class="service-category">
-            <h3 class="d-flex align-items-center mb-4">
-                {% if "Engine" in category %}
-                    <i class="fas fa-cog fa-2x me-3 text-primary"></i>
-                {% elif "Aesthetics" in category %}
-                    <i class="fas fa-palette fa-2x me-3 text-danger"></i>
-                {% elif "Handling" in category %}
-                    <i class="fas fa-road fa-2x me-3" style="color: var(--neon-green);"></i>
-                {% elif "Interior" in category %}
-                    <i class="fas fa-chair fa-2x me-3 text-warning"></i>
-                {% endif %}
-                {{ category }}
-            </h3>
+        <div class="service-category" style="margin-bottom: 5rem;">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="d-flex align-items-center justify-content-center justify-content-md-start mb-4" style="margin-bottom: 2.5rem;">
+                        {% if "Engine" in category %}
+                            <i class="fas fa-cog fa-2x me-3 text-primary"></i>
+                        {% elif "Aesthetics" in category %}
+                            <i class="fas fa-palette fa-2x me-3 text-danger"></i>
+                        {% elif "Handling" in category %}
+                            <i class="fas fa-road fa-2x me-3" style="color: var(--neon-green);"></i>
+                        {% elif "Interior" in category %}
+                            <i class="fas fa-chair fa-2x me-3 text-warning"></i>
+                        {% endif %}
+                        {{ category }}
+                    </h3>
+                </div>
+            </div>
             
-            <div class="row g-3">
+            <div class="row g-4">
                 {% for service in service_list %}
                 <div class="col-lg-6">
                     <div class="service-item">
                         <h5>{{ service.name }}</h5>
                         <p>{{ service.desc }}</p>
                         <div class="service-pricing">
-                            <span class="badge bg-primary">CALL FOR QUOTE</span>
+                            <a href="{% url 'garage:contact' %}" class="btn btn-primary btn-lg">GET YOUR QUOTE</a>
                         </div>
                     </div>
                 </div>
@@ -58,32 +62,36 @@
 </section>
 
 <!-- Process Section -->
-<section class="section section-dark">
+<section class="section section-dark" style="padding: 100px 0;">
     <div class="container">
-        <h2 class="section-title">OUR PROCESS</h2>
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">OUR PROCESS</h2>
+            </div>
+        </div>
         <div class="row g-4">
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="process-step text-center">
                     <div class="step-number">01</div>
                     <h4 class="text-primary">CONSULTATION</h4>
                     <p class="text-light-gray">Tell us your vision. We'll make it reality.</p>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="process-step text-center">
                     <div class="step-number">02</div>
                     <h4 class="text-primary">CUSTOM QUOTE</h4>
                     <p class="text-light-gray">Detailed breakdown. No hidden costs.</p>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="process-step text-center">
                     <div class="step-number">03</div>
                     <h4 class="text-primary">PROFESSIONAL BUILD</h4>
                     <p class="text-light-gray">Master craftsmen. Quality parts. Legendary results.</p>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="process-step text-center">
                     <div class="step-number">04</div>
                     <h4 class="text-primary">STREET LEGEND</h4>
@@ -95,15 +103,17 @@
 </section>
 
 <!-- Pricing Section -->
-<section class="section">
+<section class="section" style="padding: 100px 0;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-title">INVESTMENT LEVELS</h2>
-                <p class="lead text-light-gray mb-5">Quality builds require quality investment. We work with serious builders.</p>
+            <div class="col-lg-10 mx-auto">
+                <div class="text-center mb-5">
+                    <h2 class="section-title">INVESTMENT LEVELS</h2>
+                    <p class="lead text-light-gray mb-5">Quality builds require quality investment. We work with serious builders.</p>
+                </div>
                 
-                <div class="row g-4">
-                    <div class="col-md-4">
+                <div class="row g-4 justify-content-center align-items-stretch">
+                    <div class="col-lg-4 col-md-6">
                         <div class="pricing-tier">
                             <h4 class="text-success">STREET BUILD</h4>
                             <div class="price-range">$5K - $15K</div>
@@ -116,7 +126,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-6">
                         <div class="pricing-tier featured">
                             <h4 class="text-primary">TRACK BEAST</h4>
                             <div class="price-range">$15K - $40K</div>
@@ -129,7 +139,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-6">
                         <div class="pricing-tier">
                             <h4 class="text-danger">SHOW STOPPER</h4>
                             <div class="price-range">$40K+</div>
@@ -143,7 +153,7 @@
                     </div>
                 </div>
                 
-                <div class="mt-5">
+                <div class="text-center mt-5" style="padding-top: 3rem;">
                     <p class="text-warning fw-bold mb-3">IMPORTANT: NO BASIC MAINTENANCE</p>
                     <p class="text-light-gray">We don't do oil changes, tire rotations, or brake pads. We're a performance shop - we build race cars, not fix grocery getters.</p>
                 </div>
@@ -153,19 +163,108 @@
 </section>
 
 <!-- CTA Section -->
-<section class="section section-dark">
-    <div class="container text-center">
-        <h2 class="section-title">READY TO START YOUR BUILD?</h2>
-        <p class="lead mb-5 text-light-gray">Every legend starts with a conversation. Let's talk about your vision.</p>
-        <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a href="{% url 'garage:contact' %}" class="btn btn-primary btn-lg">GET CUSTOM QUOTE</a>
-            <a href="{% url 'garage:gallery' %}" class="btn btn-outline-primary btn-lg">VIEW OUR WORK</a>
+<section class="section section-dark" style="padding: 100px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title">READY TO START YOUR BUILD?</h2>
+                <p class="lead mb-5 text-light-gray">Every legend starts with a conversation. Let's talk about your vision.</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="{% url 'garage:contact' %}" class="btn btn-primary btn-lg">GET CUSTOM QUOTE</a>
+                    <a href="{% url 'garage:gallery' %}" class="btn btn-outline-primary btn-lg">VIEW OUR WORK</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Custom CSS for services page -->
 <style>
+/* Hero section */
+.hero-section .hero-content h1 {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    color: var(--pure-white);
+    text-shadow: 0 0 30px var(--neon-blue);
+    margin-bottom: 20px;
+}
+
+.hero-section .hero-content p {
+    color: var(--dim-white);
+    font-size: 1.3rem;
+}
+
+/* Section styling */
+.section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.section-dark {
+    background: linear-gradient(135deg, var(--street-dark) 0%, var(--asphalt-gray) 100%);
+    border-top: 1px solid rgba(0, 204, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 204, 255, 0.3);
+}
+
+.section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px var(--neon-blue);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Service categories */
+.service-category {
+    margin-bottom: 4rem;
+}
+
+.service-category h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--pure-white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Service items */
+.service-item {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(18, 18, 18, 0.9) 100%);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    border-radius: 8px;
+    padding: 2rem;
+    height: 100%;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-blue);
+    box-shadow: 0 15px 35px rgba(0, 204, 255, 0.3);
+}
+
+.service-item h5 {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--neon-blue);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.service-item p {
+    color: var(--dim-white);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Process steps */
 .process-step {
     padding: 2rem 1rem;
 }
@@ -174,34 +273,57 @@
     font-family: 'Orbitron', monospace;
     font-size: 3rem;
     font-weight: 900;
-    color: var(--electric-blue);
-    text-shadow: 0 0 15px var(--electric-blue);
+    color: var(--neon-blue);
+    text-shadow: 0 0 15px var(--neon-blue);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.process-step h4 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     margin-bottom: 1rem;
 }
 
+/* Pricing tiers */
 .pricing-tier {
-    background: var(--dark-gray);
-    border: 2px solid var(--electric-blue);
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%);
+    border: 2px solid var(--neon-blue);
     border-radius: 15px;
     padding: 2rem;
     height: 100%;
     transition: all 0.3s ease;
     position: relative;
+    backdrop-filter: blur(15px);
 }
 
 .pricing-tier.featured {
     border-color: var(--neon-green);
     transform: scale(1.05);
     box-shadow: 0 15px 40px rgba(57, 255, 20, 0.2);
+    z-index: 2;
+    position: relative;
 }
 
 .pricing-tier:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 204, 255, 0.3);
 }
 
 .pricing-tier.featured:hover {
     transform: scale(1.05) translateY(-10px);
+}
+
+.pricing-tier h4 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
 }
 
 .price-range {
@@ -210,34 +332,137 @@
     font-weight: 700;
     color: var(--neon-green);
     margin: 1rem 0;
+    text-shadow: 0 0 10px var(--neon-green);
 }
 
 .feature-list {
     list-style: none;
     padding: 0;
+    text-align: left;
 }
 
 .feature-list li {
     padding: 0.5rem 0;
-    color: var(--light-gray);
+    color: var(--dim-white);
     position: relative;
     padding-left: 1.5rem;
+    font-size: 0.95rem;
 }
 
 .feature-list li::before {
     content: '▶';
-    color: var(--electric-blue);
+    color: var(--neon-blue);
     position: absolute;
     left: 0;
+    top: 0.5rem;
+}
+
+/* Utility classes */
+.text-light-gray {
+    color: var(--dim-white);
 }
 
 .service-pricing .badge {
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.text-light-gray {
-    color: var(--light-gray);
+/* Button styling */
+.btn-primary {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+    border: none;
+    color: var(--underground-black);
+    font-family: 'Electrolize', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 204, 255, 0.4);
+    color: var(--underground-black);
+}
+
+.btn-outline-primary {
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    font-family: 'Electrolize', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background: var(--neon-blue);
+    color: var(--underground-black);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 204, 255, 0.4);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .step-number {
+        font-size: 2.5rem;
+    }
+    
+    .price-range {
+        font-size: 1.5rem;
+    }
+    
+    .pricing-tier.featured {
+        transform: none;
+        margin: 1rem 0;
+    }
+    
+    .service-category h3 {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .d-flex.gap-3 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .d-flex.gap-3 .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .section {
+        padding: 60px 0 !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .pricing-tier {
+        margin-bottom: 2rem;
+    }
+    
+    .service-item {
+        padding: 1.5rem;
+    }
+    
+    .service-category {
+        margin-bottom: 3rem;
+    }
 }
 </style>
 {% endblock %}
