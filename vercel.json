@@ -1,4 +1,19 @@
 {
-  "buildCommand": "python generate_favicon.py && python manage.py collectstatic --noinput",
-  "outputDirectory": "."
+  "version": 2,
+  "builds": [
+    {
+      "src": "vercel_app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "vercel_app.py"
+    }
+  ]
 }
