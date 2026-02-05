@@ -1,8 +1,10 @@
 # garage/views.py
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, FileResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 import json
+from pathlib import Path
 
 def home(request):
     """Home page view"""
@@ -131,3 +133,16 @@ def contact(request):
         }
     }
     return render(request, 'garage/contact.html', context)
+
+def favicon(request):
+    """Serve favicon.ico"""
+    favicon_path = settings.STATICFILES_DIRS[0] / 'favicon.ico'
+    if not favicon_path.exists():
+        favicon_path = settings.STATIC_ROOT / 'favicon.ico'
+    
+    if favicon_path.exists():
+        return FileResponse(open(favicon_path, 'rb'), content_type='image/vnd.microsoft.icon')
+    
+    # Return a 204 No Content response if favicon doesn't exist
+    from django.http import HttpResponse
+    return HttpResponse(status=204)
