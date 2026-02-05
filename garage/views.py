@@ -1,5 +1,5 @@
 # garage/views.py
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse, FileResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
@@ -116,10 +116,16 @@ def contact(request):
         message = data.get('message')
 
         # Simulate successful email handling
-        return JsonResponse({
-            'success': True,
-            'message': 'Thanks for reaching out! We\'ll get back to you soon.'
-        })
+        is_json = request.headers.get('Content-Type') == 'application/json'
+        is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
+        if is_json or is_ajax:
+            return JsonResponse({
+                'success': True,
+                'message': 'Thanks for reaching out! We\'ll get back to you soon.'
+            })
+
+        return redirect('garage:contact_success')
     
     context = {
         'page_title': 'Contact - Get Your Build Started',
