@@ -136,6 +136,15 @@ def contact(request):
     }
     return render(request, 'garage/contact.html', context)
 
+def contact_success(request):
+    """Contact success page view"""
+    context = {
+        'page_title': 'Message Sent - We Got You',
+        'headline': 'MESSAGE RECEIVED',
+        'subhead': 'Your build request is in our system. We will reach out soon.'
+    }
+    return render(request, 'garage/contact_success.html', context)
+
 def favicon(request):
     """Serve favicon.ico"""
     favicon_path = settings.STATICFILES_DIRS[0] / 'favicon.ico'

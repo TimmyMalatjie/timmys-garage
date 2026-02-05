@@ -101,8 +101,8 @@ function initContactForm() {
                 const data = await response.json();
                 
                 if (data.success) {
-                    showMessage('success', data.message);
                     contactForm.reset();
+                    window.location.href = '/contact/success/';
                 } else {
                     showMessage('error', data.message);
                 }

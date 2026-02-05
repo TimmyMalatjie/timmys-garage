@@ -1,0 +1,46 @@
+<!-- garage/templates/garage/contact_success.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<section class="hero-section" style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.5)), url('{% static "images/Garage.png" %}') center/cover; display: flex; align-items: center; justify-content: center;">
+    <div class="hero-content text-center" style="max-width: 800px; padding: 0 20px;">
+        <h1 class="display-2">{{ headline }}</h1>
+        <p class="lead">{{ subhead }}</p>
+        <div class="mt-4 d-flex gap-3 justify-content-center flex-wrap">
+            <a href="{% url 'garage:home' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-home me-2"></i>BACK TO HOME
+            </a>
+            <a href="{% url 'garage:gallery' %}" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-trophy me-2"></i>SEE OUR WORK
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="padding: 80px 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="p-4 rounded" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(18, 18, 18, 0.95) 100%); border: 2px solid var(--neon-green);">
+                    <h3 class="text-primary mb-3">WHAT HAPPENS NEXT?</h3>
+                    <p class="text-light-gray mb-4">
+                        We review every request personally. Expect a response within 24–48 hours.
+                        For urgent builds, call us directly at <strong class="text-primary">(555) TUNE-NOW</strong>.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="tel:555-TUNE-NOW" class="btn btn-danger btn-lg">
+                            <i class="fas fa-phone me-2"></i>CALL NOW
+                        </a>
+                        <a href="{% url 'garage:services' %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-bolt me-2"></i>VIEW SERVICES
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
