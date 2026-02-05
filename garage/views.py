@@ -100,24 +100,26 @@ def contact(request):
     """Contact page view with form handling"""
     if request.method == 'POST':
         # Handle contact form submission
-        try:
-            data = json.loads(request.body)
-            name = data.get('name')
-            email = data.get('email')
-            car_info = data.get('car_info')
-            message = data.get('message')
-            
-            # Here you would typically save to database or send email
-            # For now, just return success response
-            return JsonResponse({
-                'success': True,
-                'message': 'Thanks for reaching out! We\'ll get back to you soon.'
-            })
-        except Exception as e:
-            return JsonResponse({
-                'success': False,
-                'message': 'Something went wrong. Try calling us directly.'
-            })
+        data = {}
+        if request.body:
+            try:
+                data = json.loads(request.body)
+            except json.JSONDecodeError:
+                data = {}
+
+        if not data:
+            data = request.POST
+
+        name = data.get('name')
+        email = data.get('email')
+        car_info = data.get('car_info')
+        message = data.get('message')
+
+        # Simulate successful email handling
+        return JsonResponse({
+            'success': True,
+            'message': 'Thanks for reaching out! We\'ll get back to you soon.'
+        })
     
     context = {
         'page_title': 'Contact - Get Your Build Started',
